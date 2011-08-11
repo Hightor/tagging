@@ -1,0 +1,24 @@
+\ProvidesPackage{tagging}[2011/08/04]
+\RequirePackage{etoolbox,verbatim}
+\newcommand{\taggedy}{\relax}
+\newcommand{\taggedn}{\relax}
+\newcommand\usetag[1]{%
+  \def\do##1{\csdef{tagged@##1}{}}%
+  \docsvlist{#1}}%
+\newenvironment{tagged}[1]%
+  {\def\do##1{%
+     \ifcsname tagged@##1\endcsname%
+       \let\comment\relax%
+       \let\endcomment\relax%
+     \fi}%
+   \docsvlist{#1}%
+   \comment}%
+  {\endcomment}%
+\newcommand{\iftagged}[3]%
+  {\renewcommand{\taggedy}{#2}%
+   \renewcommand{\taggedn}{#3}%
+   \def\do##1{%
+     \ifcsdef{tagged@##1}{\renewcommand{\taggedn}{\taggedy}}{}}%
+   \docsvlist{#1}%
+   \taggedn%
+  }%
