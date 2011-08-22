@@ -5,6 +5,9 @@
 \newcommand\usetag[1]{%
   \def\do##1{\csdef{tagged@##1}{}}%
   \docsvlist{#1}}%
+\newcommand\droptag[1]{%
+  \def\do##1{\csundef{tagged@##1}{}}%
+  \docsvlist{#1}}%
 \newenvironment{tagged}[1]%
   {\def\do##1{%
      \ifcsname tagged@##1\endcsname%

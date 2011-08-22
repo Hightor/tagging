@@ -1,0 +1,32 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+\documentclass[a4paper,twoside]{memoir}
+\usepackage{tagging}
+\newcommand{\test}[1]{%
+	\paragraph{#1:}
+	\iftagged{a,b}{%
+		Either (a) or b is active.
+	}{%
+		Neither (a) nor b is active.
+	}
+	\iftagged{a}{%
+		(a) is active.
+	}{%
+		(a) is not active.
+	}
+	\iftagged{b}{%
+		b is active.
+	}{%
+		b is not active.
+	}
+}
+\begin{document}
+\mainmatter
+\test{No tags}
+\usetag{a}
+\test{(a) active}
+\usetag{a,b}
+\test{(a) and (b) active}
+\droptag{a}
+\test{only (b) active}
+\end{document}
