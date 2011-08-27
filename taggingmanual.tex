@@ -14,9 +14,149 @@
 %
 % This work consists of the files tagging.sty, taggingtest.tex, 
 % taggingmanual.tex, and taggingmanual.pdf
-% --------------------------------------------------------------
-\documentclass[a4paper,twoside]{memoir}
+% -----------------------------------------------------
+\documentclass[a4paper,12pt,twoside]{memoir}
+\usepackage[footinfo]{gitinfo}
+\usepackage{tgpagella}
+\usepackage{tgcursor}
+\usepackage{tgcursor}
+\usepackage{showexpl}
+\usepackage{tagging}
+\setulmarginsandblock{0.11111\paperwidth}{0.22222\paperwidth}{*}
+\setlrmarginsandblock{0.11111\paperwidth}{0.22222\paperwidth}{*}
+\setheadfoot{1.2\baselineskip}{0.0849\paperwidth}
+\setmarginnotes{0.125\foremargin}{0.75\foremargin}{\onelineskip}
+\setheaderspaces{*}{*}{0.618}
+\checkandfixthelayout[fixed]
+\chapterstyle{section}
+\aliaspagestyle{title}{empty}
+\settocdepth{section}
+\setsecnumdepth{chapter}
+\twocoltocetc
+\newcommand{\tpfname}{\textsf{tagging.sty}}
+\newcommand{\tpname}{\textsf{\itshape tagging}}
+% -----------------------------------------------------
+\usepackage[%
+	bookmarksnumbered,
+	bookmarksopen,
+	linktocpage,
+	]{hyperref}
+\hypersetup{
+   pdfauthor={Brent Longborough},
+   pdftitle={The tagging package for configuring documents},
+   pdfsubject={Document configuration with LaTeX},
+   pdfkeywords={tagging;document configuration},
+}
 \begin{document}
-\mainmatter
-~
+% -----------------------------------------------------
+\title{%
+	\Huge \tpfname\\[2ex]%
+	\Large A package for document configuration
+	}
+\author{Brent Longborough\\\nolinkurl{brent (at) longborough (dot) org}}
+\date{28th August, 2011}
+\maketitle
+{\centering
+Version: 1.0\\
+}
+%\vspace*{2\baselineskip}
+% -----------------------------------------------------
+\begingroup
+\aliaspagestyle{chapter}{empty}
+\setlength{\afterchapskip}{20pt}
+\let\clearpage\relax
+\let\chaptitlefont\Large\bfseries
+\tableofcontents*
+\clearpage
+\endgroup
+\chapterstyle{bringhurst}
+% -----------------------------------------------------
+\chapter{Introduction}
+\tpname\ is a \LaTeX\ package to help you easily to
+produce multiple editions of a document from a single source,
+or to reuse varying parts of an input file
+to produce more than one result at different places
+in a single document.
+
+With \tpname, you mark up parts of your
+\LaTeX source code with \textit{tags} --- labels which
+make some kind of sense for you in relation to
+the document you are writing.
+
+For example, imagine you are writing a car owners' manual.\footnote{%
+OK, I know Peugeot don't do this,
+but imagine a top-end luxury car manufacturer.}
+The car can have optional features, such as automatic transmission
+or a navigation system, and can be powered by diesel or petrol.
+
+In your source code, \tpname\ allows you to
+mark up different parts of the text that
+are required (or not) for a particular label
+(such as \textbf{petrol}, \textbf{diesel}, \textbf{satnav},
+and \textbf{auto} in this case).
+
+Separately, you specify which of your tags you wish to activate;
+when you process the document, different marked pieces are then
+included or excluded in accordance with your markup
+and the labels you have chosen to use.
+
+Alternatively, you might prefer to tag pieces of the document
+as applying to given models, by labelling them with one more
+model designations. The possibilities are, if not limitless,
+at least very extensive.
+
+For such an application, you would probably have
+a number of master document source files,
+each of which would activate the appropriate tags,
+and then input or include one or more source files
+containing the marked-up content.
+
+Another application, such as writing standard letters,
+might involve simply changing the tags to be activated
+in the preamble of a marked-up source file.
+
+Yet another application might involve describing the way
+in which something --- an idea, an algorithm, for insstance --- has evolved.
+The description of the evolving thing could be labelled with its stages,
+and then repeatedly imbedded from a master source document with different
+active tags to repflect the stage in its evolution. 
+% -----------------------------------------------------
+\chapter{Tagging commands}
+% -----------------------------------------------------
+\chapter{Examples}
+\begin{LTXexample}[pos=b]
+\usetag{good}
+
+Dear Don,
+
+The results of your latest evaluation were
+\tagged{good}{excellent.}
+\tagged{bad}{disappointing.}
+\untagged{good,bad}{satisfactory.}
+
+\iftagged{bad}{I hope you will be able to improve.
+Please let me know if I can do anything to help.
+}{Keep up the good work!}
+\end{LTXexample}
+
+\droptag{good}
+\begin{LTXexample}[pos=b]
+\usetag{bad}
+
+Dear Don,
+
+The results of your latest evaluation were
+\tagged{good}{excellent.}
+\tagged{bad}{disappointing.}
+\untagged{good,bad}{satisfactory.}
+
+\iftagged{bad}{I hope you will be able to improve.
+Please let me know if I can do anything to help.
+}{Keep up the good work!}
+\end{LTXexample}
+% -----------------------------------------------------
+\chapter{Etc}
+\section{Acknowledgements}
+\section{Licence}
+\section{About the author}
 \end{document}
