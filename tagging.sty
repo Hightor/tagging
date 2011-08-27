@@ -25,15 +25,28 @@
 \newcommand\droptag[1]{%
   \def\do##1{\csundef{tagged@##1}{}}%
   \docsvlist{#1}}%
-\newenvironment{tagged}[1]%
-  {\def\do##1{%
-     \ifcsname tagged@##1\endcsname%
-       \let\comment\relax%
-       \let\endcomment\relax%
-     \fi}%
-   \docsvlist{#1}%
-   \comment}%
-  {\endcomment\leavevmode}%
+\newenvironment{taggedblock}[1]%
+    {\def\do##1{%
+        \ifcsname tagged@##1\endcsname%
+        \let\comment\relax%
+        \let\endcomment\relax%
+    \fi}%
+    \docsvlist{#1}%
+    \comment}%
+    {\endcomment\leavevmode}%
+\newenvironment{untaggedblock}[1]{%
+    \csdef{@tagged@flag}{}
+    \def\do##1{%
+        \ifcsname tagged@##1\endcsname%
+            \csundef{@tagged@flag}{}
+        \fi}%
+    \docsvlist{#1}%
+    \ifcsname @tagged@flag\endcsname%
+        \let\comment\relax%
+        \let\endcomment\relax%
+    \fi%
+    \comment}%
+    {\endcomment\leavevmode}%
 \newcommand{\iftagged}[3]%
   {\renewcommand{\taggedy}{#2}%
    \renewcommand{\taggedn}{#3}%
@@ -42,3 +55,5 @@
    \docsvlist{#1}%
    \taggedn%
   }%
+\newcommand{\tagged}[2]{\iftagged{#1}{#2}{}}
+\newcommand{\untagged}[2]{\iftagged{#1}{}{#2}}

@@ -51,7 +51,33 @@
 \paragraph{Nested a,b:}
 \iftagged{a,b}{A or B}{Neither A nor B}
 
+\tagged{a,b}{A or B}
+
+\untagged{a,b}{Neither A nor B}
+
 \droptag{a,b}
 \paragraph{Nested neither:}
 \iftagged{a,b}{A or B}{Neither A nor B}
+
+\usetag{a,b}
+\paragraph{Tagged blocks:}
+
+\begin{taggedblock}{a}
+This a block tagged a
+\end{taggedblock}
+
+\begin{taggedblock}{b}
+This a block tagged b
+\end{taggedblock}
+
+\droptag{a,b}
+\paragraph{Untagged blocks:}
+
+\begin{untaggedblock}{a}
+This a block untagged a
+\end{untaggedblock}
+
+\begin{untaggedblock}{b}
+This a block untagged b
+\end{untaggedblock}
 \end{document}
