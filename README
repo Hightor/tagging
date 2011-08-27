@@ -1,4 +1,8 @@
-    `Tagging' is a class to allow document configuration by including or omitting tagged input.
+    The `tagging' package provides document configuration by 
+including or omitting tagged input.
+
+	tagging is licenced under the LPPL. For more details, 
+please see the accompanying manual: taggingmanual.pdf.	
 
 Change History
 ~~~~~~~~~~~~~~
@@ -7,5 +11,5 @@ Change History
 
     \usetag{list}         Turn tags on
     \droptag{list}        Turn tags off
-    \iftagged{tag}{y}{n}  Conditional inclusion/exclusion
+    \iftagged{list}{y}{n} Conditional inclusion/exclusion
     \begin{tagged}{list}  Conditionally included environment
