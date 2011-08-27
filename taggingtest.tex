@@ -46,4 +46,12 @@
 \test{(a) and (b) active}
 \droptag{a}
 \test{only (b) active}
+
+\usetag{a,b}
+\paragraph{Nested a,b:}
+\iftagged{a,b}{A or B}{Neither A nor B}
+
+\droptag{a,b}
+\paragraph{Nested neither:}
+\iftagged{a,b}{A or B}{Neither A nor B}
 \end{document}
