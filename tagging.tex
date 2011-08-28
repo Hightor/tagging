@@ -12,17 +12,8 @@
 % This work has the LPPL maintenance status `maintained'.
 % The Current Maintainer of this work is Brent Longborough.
 %
-% This work consists of the files tagging.sty, taggingtest.tex, 
-% taggingmanual.tex, and taggingmanual.pdf
-% -----------------------------------------------------
-% Formatting this document
-% ~~~~~~~~~~~~~~~~~~~~~~~~
-% This manual uses my gitinfo package which is not yet on CTAN
-% If you need to format it in the meanwhile, 
-% please alter this line in the preamble:
-%     \usepackage[footinfo]{gitinfo}
-% to this:
-%     \newcommand{\gitVtag}{(None)}
+% This work consists of these files: 
+%     tagging.sty, tagging.tex, and tagging.pdf
 % -----------------------------------------------------
 \documentclass[a4paper,12pt,twoside,openany]{memoir}
 \usepackage{showexpl}
@@ -34,7 +25,6 @@
 \setsansfont[Numbers={Proportional,OldStyle}]{TeX Gyre Adventor}
 \setmonofont{Consolas}
 \usepackage{tagging}
-\usepackage[footinfo]{gitinfo}
 \setulmarginsandblock{0.11111\paperwidth}{0.22222\paperwidth}{*}
 \setlrmarginsandblock{0.11111\paperwidth}{0.22222\paperwidth}{*}
 \setheadfoot{1.2\baselineskip}{0.0849\paperwidth}
@@ -42,13 +32,14 @@
 \setheaderspaces{*}{*}{0.618}
 \checkandfixthelayout[fixed]
 \tightlists
-\chapterstyle{section}
-\aliaspagestyle{title}{empty}
+\chapterstyle{bringhurst}
+\pagestyle{ruled}
 \settocdepth{section}
 \setsecnumdepth{none}
-%\twocoltocetc
 \newcommand{\tpfname}{\textsf{tagging.sty}}
 \newcommand{\tpname}{\textsf{\itshape tagging}}
+\newcommand{\gitVtag}{\space1.0}
+\newcommand{\gitVtagn}{\space1.0}
 % -----------------------------------------------------
 \usepackage[%
 	bookmarksnumbered,
@@ -70,6 +61,7 @@
 \author{Brent Longborough}
 \date{28th August, 2011}
 \maketitle
+
 {\centering
 Version:\gitVtagn\\
 }
@@ -80,10 +72,10 @@ Version:\gitVtagn\\
 \setlength{\afterchapskip}{20pt}
 \let\clearpage\relax
 \let\chaptitlefont\Large\bfseries
+\vspace*{5\baselineskip}
 \tableofcontents*
 \clearpage
 \endgroup
-\chapterstyle{bringhurst}
 % -----------------------------------------------------
 \chapter{Introduction}
 \tpname\ is a \LaTeX\ package to help you easily to
