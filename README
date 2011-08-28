@@ -9,12 +9,12 @@ Change History
 
 2011-08-22    Initial release, providing:
 
-    \usetag{list}                Turn tags on
-    \droptag{list}               Turn tags off
-    \iftagged{list}{y}{n}        Conditional inclusion/exclusion
-    \tagged{list}{n}             Conditional inclusion
+    \tagged{list}{y}             Conditional inclusion
     \untagged{list}{n}           Conditional exclusion
+    \iftagged{list}{y}{n}        Conditional inclusion/exclusion
     \begin{taggedblock}{list}    Conditionally included environment
         \end{taggedblock}
     \begin{untaggedblock}{list}  Conditionally included environment
         \end{taggedblock}
+    \usetag{list}                Turn tags on
+    \droptag{list}               Turn tags off
