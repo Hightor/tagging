@@ -19,6 +19,8 @@
 \RequirePackage{etoolbox,verbatim}
 \newcommand{\taggedy}{\relax}
 \newcommand{\taggedn}{\relax}
+\newcomment{tagged@ignore}
+% \commentsoff{tagged@ignore}
 \newcommand\usetag[1]{%
   \def\do##1{\csdef{tagged@##1}{}}%
   \docsvlist{#1}}%
@@ -28,12 +30,12 @@
 \newenvironment{taggedblock}[1]%
     {\def\do##1{%
         \ifcsname tagged@##1\endcsname%
-        \let\comment\relax%
-        \let\endcomment\relax%
+        \let\tagged@ignore\relax%
+        \let\endtagged@ignore\relax%
     \fi}%
     \docsvlist{#1}%
-    \comment}%
-    {\endcomment\leavevmode}%
+    \tagged@ignore}%
+    {\endtagged@ignore\leavevmode}%
 \newenvironment{untaggedblock}[1]{%
     \csdef{@tagged@flag}{}
     \def\do##1{%
@@ -42,11 +44,11 @@
         \fi}%
     \docsvlist{#1}%
     \ifcsname @tagged@flag\endcsname%
-        \let\comment\relax%
-        \let\endcomment\relax%
+        \let\tagged@ignore\relax%
+        \let\endtagged@ignore\relax%
     \fi%
-    \comment}%
-    {\endcomment\leavevmode}%
+    \tagged@ignore}%
+    {\endtagged@ignore\leavevmode}%
 \newcommand{\iftagged}[3]%
   {\renewcommand{\taggedy}{#2}%
    \renewcommand{\taggedn}{#3}%
