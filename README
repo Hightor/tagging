@@ -7,6 +7,12 @@ please see the accompanying manual: tagging.pdf.
 Change History
 ~~~~~~~~~~~~~~
 
+2019-09-07    Kindly provided and inspired by Frank Mittelbach:
+
+	Bug fixes
+	Removed interference with comment environment (from verbatim package)
+	Allow initial active tag list to be passed as package options
+
 2011-08-22    Initial release, providing:
 
     \tagged{list}{y}             Conditional inclusion

@@ -18,13 +18,13 @@
 % !TEX TS-program = pdflatex
 % !TEX encoding = UTF-8 Unicode
 \documentclass[a4paper,twoside]{memoir}
-\usepackage{tagging}
+\usepackage[a]{tagging}
 \newcommand{\test}[1]{%
 	\paragraph{#1:}
 	\iftagged{a,b}{%
-		Either (a) or b is active.
+		Either (a) or (b) is active.
 	}{%
-		Neither (a) nor b is active.
+		Neither (a) nor (b) is active.
 	}
 	\iftagged{a}{%
 		(a) is active.
@@ -32,15 +32,14 @@
 		(a) is not active.
 	}
 	\iftagged{b}{%
-		b is active.
+		(b) is active.
 	}{%
-		b is not active.
+		(b) is not active.
 	}
 }
 \begin{document}
 \mainmatter
-\test{No tags}
-\usetag{a}
+% \usetag{a} <-- Now in package options
 \test{(a) active}
 \usetag{a,b}
 \test{(a) and (b) active}
@@ -63,21 +62,24 @@
 \paragraph{Tagged blocks:}
 
 \begin{taggedblock}{a}
-This a block tagged a
+This a block tagged (a)
 \end{taggedblock}
 
 \begin{taggedblock}{b}
-This a block tagged b
+This a block tagged (b)
 \end{taggedblock}
 
 \droptag{a,b}
 \paragraph{Untagged blocks:}
 
 \begin{untaggedblock}{a}
-This a block untagged a
+This a block untagged (a)
 \end{untaggedblock}
 
 \begin{untaggedblock}{b}
-This a block untagged b
+This a block untagged (b)
 \end{untaggedblock}
+
+\test{No tags}
+
 \end{document}

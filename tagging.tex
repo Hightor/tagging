@@ -1,5 +1,5 @@
 % tagging.tex
-% Copyright 2011 Brent Longborough
+% Copyright 2019 Brent Longborough
 %
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3
@@ -36,10 +36,11 @@
 \pagestyle{ruled}
 \settocdepth{section}
 \setsecnumdepth{none}
-\newcommand{\tpfname}{\textsf{tagging.sty}}
-\newcommand{\tpname}{\textsf{\itshape tagging}}
-\newcommand{\gitVtag}{\space1.0}
-\newcommand{\gitVtagn}{\space1.0}
+\newcommand{\tpn}{tagging}
+\newcommand{\tpfname}{\textsf{\tpn.sty}}
+\newcommand{\tpname}{\textsf{\itshape \tpn}}
+\newcommand{\gitVtag}{\space1.1}
+\newcommand{\gitVtagn}{\space1.1}
 % -----------------------------------------------------
 \usepackage[%
 	bookmarksnumbered,
@@ -59,7 +60,7 @@
 	\Large A package for document configuration
 	}
 \author{Brent Longborough}
-\date{28th August, 2011}
+\date{7th September, 2019}
 \maketitle
 
 {\centering
@@ -84,17 +85,18 @@ or to reuse varying parts of an input file
 to produce more than one result at different places
 in a single document.
 
-To use \tpname, just include a standard \verb!\usepackage{tagging}!
-in your document preamble; there are no package options.
+To use \tpname, just include a standard
+\verb!\usepackage{tagging}!  in your document preamble; there
+are no package options which alter its intrinsic behaviour,
+although later you will see how any options you may give are
+subverted.
 
 With \tpname, you mark up parts of your
 \LaTeX source code with \textit{tags} --- labels which
 make some kind of sense for you in relation to
 the document you are writing.
 
-For example, imagine you are writing a car owners' manual.\footnote{%
-OK, I know Peugeot don't do this,
-but imagine a top-end luxury car manufacturer.}
+For example, imagine you are writing a car owners' manual.
 The car can have optional features, such as automatic transmission
 or a navigation system, and can be powered by diesel or petrol.
 
@@ -225,6 +227,15 @@ activating or deactivating a given tag has no hidden effect on other tags.
 \subsection{{\ttfamily\textbackslash usetag\{{\itshape<taglist>}\}}}
 This command activates \emph{all} the tags in \texttt{\itshape<taglist>}.
 % - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\subsection{{\ttfamily\textbackslash usepackage[{\itshape<taglist>}]\{\tpn\}}}
+If you wish, you may activate one or more tags, once, in your
+document preamble by passing a taglist as options when you call
+the package. 
+\emph{All} the tags in \texttt{\itshape<taglist>} are activated.
+Any tags activated this way can still be deactivated and
+reactivated as many times as you may need in the body of the
+document.
+% - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \subsection{{\ttfamily\textbackslash droptag\{{\itshape<taglist>}\}}}
 This command deactivates \emph{all} the tags in \texttt{\itshape<taglist>}.
 \tpname\ is too simple to include a command 
@@ -318,20 +329,25 @@ Philipp Lehman's
 \href{http://www.ctan.org/tex-archive/macros/latex/contrib/etoolbox}{etoolbox}
 and of
 \href{http://www.ctan.org/pkg/verbatim}{verbatim}, currently maintained by
-Rainer Schöpf, both of which are required for \tpname to work.
+Rainer Schöpf, both of which are required for \tpname\ to work.
 
-The \href{http://tex.stackexchange.com}{\TeX.SE community}
-has been a constant source of help, inspiration, and amazement.
+I am most grateful to Frank Mittelbach, who intervened to fix my
+dodgy code and to provide the ability to activate tags as
+package options, thereby directly inspiring v1.1.
 
-Of course, we all stand on the shoulders of giants: Donald Knuth,
-and then too many others to name.
+The \href{http://tex.stackexchange.com}{\TeX.SE community} has
+been a constant source of help, inspiration, and amazement.
+
+Of course, we all stand on the shoulders of giants: Donald
+Knuth, and then too many others to name.
 
 Thank you all. Any failings that remain are entirely
 ``an ill-favoured thing, sir, but mine own''.
 
 % - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\clearpage
 \section{Copyright \& licence}
-Copyright \copyright\ 2011, Brent Longborough.
+Copyright \copyright\ 2019, Brent Longborough.
 
 This work --- \tpname\ --- may be distributed and/or modified under the
 conditions of the LaTeX Project Public License: either version 1.3
@@ -358,7 +374,7 @@ if you find such an incompatibility, I may not have the skill to fix it.
 However, I'll be very happy to receive your comments by email.\\[\baselineskip]
 Enjoy!\\
 Brent Longborough\\[\baselineskip]
-\textsf{brent+ctancontrib (at) longborough (dot) org}\\
+\textsf{brent+ctan (at) llwyd-consulting (dot) cymru}\\
 and at \href{http://tex.stackexchange.com/users/344/brent-longborough}{\TeX.SE}
 % -----------------------------------------------------
 \end{document}
