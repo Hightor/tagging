@@ -12,16 +12,15 @@
 % This work has the LPPL maintenance status `maintained'.
 % The Current Maintainer of this work is Brent Longborough.
 %
-% This work consists of these files: 
+% This work consists of these files:
 %     tagging.sty, tagging.tex, and tagging.pdf
 % --------------------------------------------------------------
-\ProvidesPackage{tagging}[2019/09/07 v1.1]
+\ProvidesPackage{tagging}[2019/09/09 v1.1.0.1]
 \RequirePackage{etoolbox,verbatim}
 
 
 \newcommand{\taggedy}{\relax}
 \newcommand{\taggedn}{\relax}
-\newcomment{tagged@ignore}
 \newcommand\usetag[1]{%
   \def\do##1{\csdef{tagged@##1}{}}%
   \docsvlist{#1}}%
@@ -33,12 +32,12 @@
 \newenvironment{taggedblock}[1]%
     {\def\do##1{%
         \ifcsname tagged@##1\endcsname%
-        \let\tagged@ignore\relax%
-        \let\endtagged@ignore\relax%
+        \let\comment\relax%
+        \let\endcomment\relax%
     \fi}%
     \docsvlist{#1}%
-    \tagged@ignore\ignorespaces}% FMi
-    {\endtagged@ignore\ignorespacesafterend}% FMi
+    \comment\ignorespaces}% FMi
+    {\endcomment\ignorespacesafterend}% FMi
 \newenvironment{untaggedblock}[1]{%
     \csdef{@tagged@flag}{}% FMi
     \def\do##1{%
@@ -47,11 +46,11 @@
         \fi}%
     \docsvlist{#1}%
     \ifcsname @tagged@flag\endcsname%
-        \let\tagged@ignore\relax%
-        \let\endtagged@ignore\relax%
+        \let\comment\relax%
+        \let\endcomment\relax%
     \fi%
-    \tagged@ignore\ignorespaces}% FMi
-    {\endtagged@ignore\ignorespacesafterend}% FMi
+    \comment\ignorespaces}% FMi
+    {\endcomment\ignorespacesafterend}% FMi
 
 
 \newcommand{\iftagged}[3]%
@@ -66,5 +65,5 @@
 \newcommand{\untagged}[2]{\iftagged{#1}{}{#2}}
 
 %FMi Allow tags to be activated as package options
-\DeclareOption*{\usetag{\CurrentOption}} 
+\DeclareOption*{\usetag{\CurrentOption}}
 \ProcessOptions

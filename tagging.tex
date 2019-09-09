@@ -1,6 +1,10 @@
+﻿% !TEX TS-program = latexmkl
+% !TEX encoding = UTF-8 Unicode
+% !TeX  spellcheck  =  en_GB
+% -----------------------------------------------------
 % tagging.tex
 % Copyright 2019 Brent Longborough
-%
+% -----------------------------------------------------
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3
 % of this license or (at your option) any later version.
@@ -12,7 +16,7 @@
 % This work has the LPPL maintenance status `maintained'.
 % The Current Maintainer of this work is Brent Longborough.
 %
-% This work consists of these files: 
+% This work consists of these files:
 %     tagging.sty, tagging.tex, and tagging.pdf
 % -----------------------------------------------------
 \documentclass[a4paper,12pt,twoside,openany]{memoir}
@@ -39,8 +43,8 @@
 \newcommand{\tpn}{tagging}
 \newcommand{\tpfname}{\textsf{\tpn.sty}}
 \newcommand{\tpname}{\textsf{\itshape \tpn}}
-\newcommand{\gitVtag}{\space1.1}
-\newcommand{\gitVtagn}{\space1.1}
+\newcommand{\gitVtag}{\space1.1.0.1}
+\newcommand{\gitVtagn}{\space1.1.0.1}
 % -----------------------------------------------------
 \usepackage[%
 	bookmarksnumbered,
@@ -60,7 +64,7 @@
 	\Large A package for document configuration
 	}
 \author{Brent Longborough}
-\date{7th September, 2019}
+\date{9th September, 2019}
 \maketitle
 
 {\centering
@@ -113,7 +117,7 @@ and the active tags.
 
 Alternatively, you might prefer to tag pieces of the document
 as applying to given models, by labelling them with one more
-model designations. 
+model designations.
 For such an application, you would probably have
 a number of master document source files,
 each of which would activate the appropriate tags,
@@ -128,7 +132,7 @@ Yet another application might involve describing the way
 in which something --- an idea, an algorithm, for instance --- has evolved.
 The description of the evolving thing could be labelled with its stages,
 and then repeatedly imbedded from a master source document with different
-active tags to reflect the stage in its evolution. 
+active tags to reflect the stage in its evolution.
 
 The possibilities are, if not limitless,
 at least very extensive.
@@ -215,7 +219,7 @@ is included in the document only if \emph{none} of the tags in
 The tag control commands determine which tags
 are active at any point in the document.
 The document starts with all tags inactive;
-\tpname\ requires that you explicitly activate 
+\tpname\ requires that you explicitly activate
 the tags you need.
 
 Once a tag has been activated, it remains active from that point
@@ -230,7 +234,7 @@ This command activates \emph{all} the tags in \texttt{\itshape<taglist>}.
 \subsection{{\ttfamily\textbackslash usepackage[{\itshape<taglist>}]\{\tpn\}}}
 If you wish, you may activate one or more tags, once, in your
 document preamble by passing a taglist as options when you call
-the package. 
+the package.
 \emph{All} the tags in \texttt{\itshape<taglist>} are activated.
 Any tags activated this way can still be deactivated and
 reactivated as many times as you may need in the body of the
@@ -238,7 +242,7 @@ document.
 % - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \subsection{{\ttfamily\textbackslash droptag\{{\itshape<taglist>}\}}}
 This command deactivates \emph{all} the tags in \texttt{\itshape<taglist>}.
-\tpname\ is too simple to include a command 
+\tpname\ is too simple to include a command
 to ``deactivate all known tags'' --- sorry.
 
 % - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -324,7 +328,7 @@ it comes with:
 \section{Acknowledgements and dependencies}
 
 \tpname\ is based on an idea by \href{http://tex.stackexchange.com/users/2674/leo-liu}{Leo Liu}.
-It would have been a lot more difficult to implement without the help of 
+It would have been a lot more difficult to implement without the help of
 Philipp Lehman's
 \href{http://www.ctan.org/tex-archive/macros/latex/contrib/etoolbox}{etoolbox}
 and of
@@ -361,7 +365,7 @@ version 2005/12/01 or later.
 This work has the LPPL maintenance status `maintained';
 the Current Maintainer of this work is Brent Longborough.
 
-This work consists of the files 
+This work consists of the files
 tagging.sty, tagging.tex, and tagging.pdf
 
 % - - - - - - - - - - - - - - - - - - - - - - - - - - -
