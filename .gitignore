@@ -3,11 +3,16 @@
 *.bbl
 *.blg
 *.dvi
+*.fdb_latexmk
+*.fls
+*.jpg
 *.lock
-*.log
 *.lof
+*.log
 *.nav
 *.out
+*.pdf
+*.png
 *.pyc
 *.snm
 *.synctex.gz
@@ -16,6 +21,5 @@
 .#*
 \#*
 gitHeadInfo.tex
-*.pdf
-*.jpg
-*.png
+tagging/*
+temp/*
